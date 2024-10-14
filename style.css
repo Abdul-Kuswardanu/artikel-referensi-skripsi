@@ -82,7 +82,7 @@ footer div input[type="email"] {
     margin-right: 10px;       
     border: 1px solid #ccc;   
     background-color: #ffffff;   
-    color: white;             
+    color: rgb(0, 0, 0);             
 }
 
 footer div button {

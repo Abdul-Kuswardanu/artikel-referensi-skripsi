@@ -1,24 +1,57 @@
-# Aplikasi kumpulan artikel referensi skripsi
+# Referensi Skripsi Web Application
 
-Web ini tampaknya merupakan sebuah aplikasi berbasis PHP, SQLite3, dan CSS yang digunakan untuk mengelola referensi skripsi atau informasi terkait dokumen akademik, seperti skripsi, jurnal ilmiah, dan sumber lainnya. Di bawah ini adalah penjelasan dari masing-masing bagian dan fungsinya:
+## Deskripsi
+Aplikasi web **Referensi Skripsi** adalah sebuah sistem sederhana berbasis **PHP**, **SQLite3**, dan **CSS** yang bertujuan untuk menampilkan dan mengelola referensi skripsi. Pengguna dapat melihat referensi skripsi yang tersimpan di database dan juga mengirimkan email mereka melalui form di footer untuk didaftarkan ke dalam database.
 
-1. HTML dan CSS:
-HTML digunakan untuk mendefinisikan struktur konten web, seperti header, form, div, dan footer.
-CSS digunakan untuk mengatur penataan dan penampilan web, seperti tata letak, warna, margin, padding, dan perataan elemen.
-Flexbox dan grid digunakan untuk layout yang responsif dan mengatur elemen dalam formasi kiri-tengah-kanan.
+### Fitur Utama
+- **Menampilkan Referensi Skripsi**: Data referensi skripsi yang disimpan dalam database ditampilkan kepada pengguna.
+- **Input Email**: Pengguna dapat menginputkan email mereka ke dalam form, dan email tersebut akan disimpan ke dalam database.
+- **Desain Responsif**: Menggunakan CSS Flexbox untuk membuat tata letak yang rapi dan responsif.
 
-2. Struktur Website:
-Header: Biasanya berisi logo, judul web, dan navigasi.
-Konten Utama (Section): Menampilkan referensi skripsi, yang diambil dari database SQLite3, ditampilkan dalam bentuk loop untuk setiap baris data yang ditemukan.
-Footer: Menyediakan informasi tambahan seperti kontak dan email, dan juga form untuk pengumpulan data (seperti input email).
+## Teknologi yang Digunakan
+- **PHP**: Digunakan untuk berinteraksi dengan database SQLite dan menghasilkan halaman web secara dinamis.
+- **SQLite3**: Digunakan sebagai database untuk menyimpan referensi skripsi dan email pengguna.
+- **HTML & CSS**: Untuk menampilkan antarmuka pengguna dan memberikan tampilan yang menarik.
 
-3. Menampilkan Referensi Skripsi:
+## Instalasi
 
-Data yang disimpan dalam tabel skripsi ditampilkan di antarmuka dengan cara melakukan query ke database, mengambil data, dan menampilkannya dalam loop menggunakan PHP.
-Di dalam loop, setiap referensi menampilkan judul skripsi dan konten. Link untuk mengunduh file dan mengirimkan email dapat diaktifkan dengan menambahkan logika yang sesuai dalam bagian PHP atau menggunakan email API.
+### Persyaratan
+- Server yang mendukung **PHP** (minimal PHP 7.0).
+- **SQLite3** diaktifkan pada server PHP.
+- Server web seperti **Apache** atau **Nginx**.
 
+### Langkah Instalasi
+1. Clone atau download repository ini ke server web Anda.
+   ```bash
+   git clone https://github.com/user/referensi-skripsi-web.git
+2. Pastikan file PHP memiliki izin yang tepat dan dapat diakses oleh server.
+3. Buat database SQLite (your_database_name.db) dan pastikan database tersebut bisa diakses oleh script PHP.
+4. Jalankan server web dan akses aplikasi di browser Anda.
 
-4. Form Input:
+### Struktur Folder 
+├── index.php           # Halaman utama yang menampilkan referensi skripsi
+├── save_email.php      # Script untuk menyimpan email pengguna ke dalam database
+├── style.css           # File CSS untuk mengatur tampilan halaman
+├── your_database_name.db # File database SQLite (setelah dibuat)
+└── README.md           # Dokumentasi aplikasi
 
-Form email pada footer memungkinkan pengguna mengirimkan email atau mendaftar untuk mendapatkan informasi terkait web.
-Input email di footer dirancang agar pengguna bisa memberikan alamat email mereka yang bisa digunakan untuk komunikasi lebih lanjut.
+### Cara Kerja 
+1. Menampilkan Referensi Skripsi
+Referensi skripsi diambil dari database SQLite dengan query SQL. PHP kemudian menampilkan data tersebut di halaman utama dalam bentuk daftar referensi. Setiap referensi terdiri dari judul dan konten, dan ditampilkan dalam bentuk loop menggunakan fetchArray().
+
+2. Input Email
+Pengguna dapat memasukkan email mereka melalui form di footer. Email ini dikirimkan melalui metode POST ke file save_email.php, di mana email akan disimpan ke tabel emails di database SQLite. Berikut adalah proses singkatnya:
+
+Email divalidasi dengan filter_var() untuk memastikan format yang valid.
+Jika valid, email disimpan ke database menggunakan prepared statement untuk mencegah SQL Injection.
+3. CSS dan Tampilan
+Flexbox digunakan untuk membuat tata letak yang responsif.
+Footer diatur agar memiliki email di bagian kiri, informasi di tengah, dan kontak di sebelah kanan. Footer juga memiliki garis pemisah di bagian atas dan latar belakang hitam untuk estetika yang lebih profesional.
+
+### Kontribusi
+Jika Anda ingin berkontribusi, silakan lakukan pull request atau ajukan masalah melalui issue tracker di repo GitHub ini.
+
+### Lisensi
+Proyek ini dilisensikan di bawah MIT License.
+
+Silakan copy seluruh isi `README.md` di atas ke file di proyek Anda.

@@ -58,10 +58,9 @@ $db = new SQLite3('database.db');
     </div>
     </section>
 
-
     <section class="submission">
         <h3>Submit a New Skripsi</h3>
-        <form method="POST" action="index.php">
+        <form method="POST" action="db.php">
             <input type="text" name="title" placeholder="Title" required>
             <textarea name="content" placeholder="Content" required></textarea>
             <button type="submit" name="submit">Submit</button><br><br>
@@ -69,10 +68,12 @@ $db = new SQLite3('database.db');
     </section>
 
     <footer>
-        <div>
-            <input type="email" placeholder="Email" name="email">
-            <button>Submit</button>
-        </div>
+    <div>
+        <form action="db.php" method="POST">
+            <input type="email" placeholder="Email" name="email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
         <p>Created by me</p>
         <p>Contact Person: <a href="mailto:">Email</a> | <a href="#">WhatsApp</a></p>
     </footer>
